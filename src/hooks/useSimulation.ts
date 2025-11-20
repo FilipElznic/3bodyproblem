@@ -6,7 +6,7 @@ export const useSimulation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isRunning, setIsRunning] = useState(false);
   const [totalEnergy, setTotalEnergy] = useState(0);
-  const [gravity, setGravity] = useState(1000);
+  const [gravity, setGravity] = useState(100);
   const engineRef = useRef<PhysicsEngine>(
     new PhysicsEngine(PRESETS["figure8"])
   );
@@ -71,7 +71,7 @@ export const useSimulation = () => {
     // Physics Update
     // Use a fixed time step for stability, or delta time
     // For this simulation, fixed small steps are better for Verlet
-    const dt = 0.1;
+    const dt = 0.5; // Speed up simulation
     engineRef.current.update(dt);
 
     // Render

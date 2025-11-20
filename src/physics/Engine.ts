@@ -1,7 +1,7 @@
 import { Body } from "../types";
 
 export class PhysicsEngine {
-  public G: number = 1000; // Gravitational constant - Scaled up for pixel coordinates
+  public G: number = 100; // Gravitational constant
   private softening: number = 5; // Softening parameter
   public bodies: Body[] = [];
   private stepCount: number = 0;

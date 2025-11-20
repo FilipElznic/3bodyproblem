@@ -74,9 +74,9 @@ export const Controls: React.FC<ControlsProps> = ({
           </label>
           <input
             type="range"
-            min="100"
-            max="5000"
-            step="100"
+            min="10"
+            max="500"
+            step="10"
             value={gravity}
             onChange={(e) => updateGravity(parseFloat(e.target.value))}
             className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
