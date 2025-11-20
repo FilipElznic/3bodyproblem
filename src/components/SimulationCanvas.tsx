@@ -1,7 +1,11 @@
-import React, { useRef, useEffect } from "react";
+import React, { RefObject } from "react";
 
-export const SimulationCanvas: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+interface SimulationCanvasProps {
+  canvasRef: RefObject<HTMLCanvasElement>;
+}
 
-  return <canvas ref={canvasRef} className="w-full h-full block" />;
+export const SimulationCanvas: React.FC<SimulationCanvasProps> = ({
+  canvasRef,
+}) => {
+  return <canvas ref={canvasRef} className="w-full h-full block bg-black" />;
 };
