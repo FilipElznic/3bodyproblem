@@ -13,6 +13,7 @@ export interface Body {
   color: string;
   trail: Vector2[];
   isStatic?: boolean;
+  icon?: string;
 }
 
 export interface SimulationState {

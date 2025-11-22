@@ -56,14 +56,19 @@ export const HierarchicalPage = ({ onNavigate }: HierarchicalPageProps) => {
       </div>
 
       {/* Info Panel */}
-      <div className="absolute bottom-8 left-4 bg-black/80 text-green-400 p-5 border border-green-500/50 max-w-xs shadow-[0_0_15px_rgba(51,255,0,0.1)] font-mono">
+      <div className="absolute bottom-8 right-4 bg-black/90 text-green-400 p-5 border border-green-500/50 max-w-sm shadow-[0_0_15px_rgba(51,255,0,0.1)] font-mono z-40">
         <h2 className="text-lg font-bold mb-2 uppercase tracking-widest border-b border-green-500/30 pb-2">
           Hierarchical System
         </h2>
+        <p className="text-sm opacity-80 leading-relaxed mb-2">
+          This simulation shows a stable "hierarchical" configuration. It
+          consists of a massive central body (like a star) with two smaller
+          bodies orbiting it.
+        </p>
         <p className="text-sm opacity-80 leading-relaxed">
-          A massive central body with two smaller bodies orbiting around it and
-          each other. This stable configuration mimics a star system or moon
-          system.
+          This setup mimics real-world systems like a planet with a moon
+          orbiting a star, or a binary star system. Unlike the chaotic "Classic"
+          simulation, this system is generally stable over long periods.
         </p>
       </div>
     </div>

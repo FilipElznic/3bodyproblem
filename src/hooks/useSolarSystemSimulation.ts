@@ -87,23 +87,46 @@ export const useSolarSystemSimulation = () => {
 
       // Draw bodies
       for (const body of engine.bodies) {
-        ctx.fillStyle = body.color;
-        ctx.beginPath();
-        ctx.arc(
-          centerX + body.position.x,
-          centerY + body.position.y,
-          body.radius,
-          0,
-          Math.PI * 2
-        );
-        ctx.fill();
+        if (body.icon) {
+          ctx.font = `${body.radius * 2.5}px Arial`;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(
+            body.icon,
+            centerX + body.position.x,
+            centerY + body.position.y
+          );
+        } else {
+          ctx.fillStyle = body.color;
+          ctx.beginPath();
+          ctx.arc(
+            centerX + body.position.x,
+            centerY + body.position.y,
+            body.radius,
+            0,
+            Math.PI * 2
+          );
+          ctx.fill();
+        }
 
         // Add glow effect for the Sun
         if (body.mass > 1000) {
           ctx.shadowBlur = 50;
           ctx.shadowColor = body.color;
-          ctx.fill();
-          ctx.shadowBlur = 0;
+          // If it's an icon, we can't really fill() again to glow, but we can add shadow to the text
+          if (body.icon) {
+            ctx.shadowBlur = 50;
+            ctx.shadowColor = body.color;
+            ctx.fillText(
+              body.icon,
+              centerX + body.position.x,
+              centerY + body.position.y
+            );
+            ctx.shadowBlur = 0;
+          } else {
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
         }
       }
 

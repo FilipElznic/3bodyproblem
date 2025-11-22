@@ -56,14 +56,19 @@ export const ClassicPage = ({ onNavigate }: ClassicPageProps) => {
       </div>
 
       {/* Info Panel */}
-      <div className="absolute bottom-8 left-4 bg-black/80 text-green-400 p-5 border border-green-500/50 max-w-xs shadow-[0_0_15px_rgba(51,255,0,0.1)] font-mono">
+      <div className="absolute bottom-8 right-4 bg-black/90 text-green-400 p-5 border border-green-500/50 max-w-sm shadow-[0_0_15px_rgba(51,255,0,0.1)] font-mono z-40">
         <h2 className="text-lg font-bold mb-2 uppercase tracking-widest border-b border-green-500/30 pb-2">
-          Classic 3-Body
+          Classic 3-Body Problem
         </h2>
-        <p className="text-sm opacity-80 leading-relaxed">
-          Three bodies of similar mass interacting gravitationally in chaotic
-          motion. Small changes in initial conditions lead to vastly different
-          outcomes.
+        <p className="text-sm opacity-80 leading-relaxed mb-2">
+          This simulation visualizes the chaotic nature of the three-body
+          problem. Unlike a two-body system (like Earth and Moon) which is
+          stable and predictable, adding a third body creates a system where
+          future positions are impossible to predict long-term.
+        </p>
+        <p className="text-xs opacity-60 border-t border-green-500/30 pt-2 mt-2">
+          Try the "Presets" in the control panel to see special stable solutions
+          like the Figure-8 or Lagrange points.
         </p>
       </div>
     </div>
