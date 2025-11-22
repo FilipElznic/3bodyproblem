@@ -7,6 +7,7 @@ export const useSimulation = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [totalEnergy, setTotalEnergy] = useState(0);
   const [gravity, setGravity] = useState(100);
+  const [timeScale, setTimeScale] = useState(1);
   const engineRef = useRef<PhysicsEngine>(
     new PhysicsEngine(PRESETS["figure8"])
   );
@@ -71,7 +72,7 @@ export const useSimulation = () => {
     // Physics Update
     // Use a fixed time step for stability, or delta time
     // For this simulation, fixed small steps are better for Verlet
-    const dt = 0.5; // Speed up simulation
+    const dt = 0.5 * timeScale; // Speed up simulation
     engineRef.current.update(dt);
 
     // Render
@@ -83,7 +84,7 @@ export const useSimulation = () => {
     if (isRunning) {
       requestRef.current = requestAnimationFrame(animate);
     }
-  }, [isRunning, draw]);
+  }, [isRunning, draw, timeScale]);
 
   useEffect(() => {
     if (isRunning) {
@@ -164,9 +165,11 @@ export const useSimulation = () => {
     isRunning,
     totalEnergy,
     gravity,
+    timeScale,
     togglePlay,
     reset,
     loadPreset,
     updateGravity,
+    setTimeScale,
   };
 };

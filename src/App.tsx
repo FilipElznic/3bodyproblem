@@ -1,32 +1,23 @@
-import { useSimulation } from "./hooks/useSimulation";
-import { SimulationCanvas } from "./components/SimulationCanvas";
-import { Controls } from "./components/Controls";
+import { useState } from "react";
+import { ClassicPage } from "./components/ClassicPage";
+import { HierarchicalPage } from "./components/HierarchicalPage";
+import { SolarSystemPage } from "./components/SolarSystemPage";
 
 function App() {
-  const {
-    canvasRef,
-    isRunning,
-    totalEnergy,
-    gravity,
-    togglePlay,
-    reset,
-    loadPreset,
-    updateGravity,
-  } = useSimulation();
+  const [currentPage, setCurrentPage] = useState<
+    "classic" | "hierarchical" | "solar"
+  >("classic");
 
   return (
-    <div className="w-full h-screen relative bg-black overflow-hidden">
-      <SimulationCanvas canvasRef={canvasRef} />
-      <Controls
-        isRunning={isRunning}
-        totalEnergy={totalEnergy}
-        gravity={gravity}
-        togglePlay={togglePlay}
-        reset={reset}
-        loadPreset={loadPreset}
-        updateGravity={updateGravity}
-      />
-    </div>
+    <>
+      {currentPage === "classic" && <ClassicPage onNavigate={setCurrentPage} />}
+      {currentPage === "hierarchical" && (
+        <HierarchicalPage onNavigate={setCurrentPage} />
+      )}
+      {currentPage === "solar" && (
+        <SolarSystemPage onNavigate={setCurrentPage} />
+      )}
+    </>
   );
 }
 

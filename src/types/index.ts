@@ -12,6 +12,7 @@ export interface Body {
   radius: number;
   color: string;
   trail: Vector2[];
+  isStatic?: boolean;
 }
 
 export interface SimulationState {

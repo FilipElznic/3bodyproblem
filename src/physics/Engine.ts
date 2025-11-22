@@ -39,6 +39,9 @@ export class PhysicsEngine {
     // Step 3: Calculate new forces/accelerations a(t + dt)
     this.calculateAccelerations();
 
+    // Handle collisions to prevent bodies from overlapping
+    this.handleCollisions();
+
     // Step 4: v(t + dt)
     for (const body of this.bodies) {
       body.velocity.x += body.acceleration.x * halfDt;
@@ -47,6 +50,56 @@ export class PhysicsEngine {
 
     // Correction: Keep Center of Mass at (0,0) to simulate "Space" reference frame
     this.recenterSystem();
+  }
+
+  private handleCollisions(): void {
+    for (let i = 0; i < this.bodies.length; i++) {
+      for (let j = i + 1; j < this.bodies.length; j++) {
+        const bodyA = this.bodies[i];
+        const bodyB = this.bodies[j];
+
+        const dx = bodyB.position.x - bodyA.position.x;
+        const dy = bodyB.position.y - bodyA.position.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const minDistance = bodyA.radius + bodyB.radius + 2; // Add small buffer
+
+        if (distance < minDistance && distance > 0) {
+          // Bodies are overlapping, push them apart
+          const overlap = minDistance - distance;
+          const nx = dx / distance; // Normalized direction
+          const ny = dy / distance;
+
+          // Separate bodies proportional to their masses (lighter body moves more)
+          const totalMass = bodyA.mass + bodyB.mass;
+          const moveA = (overlap * bodyB.mass) / totalMass;
+          const moveB = (overlap * bodyA.mass) / totalMass;
+
+          bodyA.position.x -= nx * moveA;
+          bodyA.position.y -= ny * moveA;
+          bodyB.position.x += nx * moveB;
+          bodyB.position.y += ny * moveB;
+
+          // Calculate relative velocity along collision normal
+          const dvx = bodyB.velocity.x - bodyA.velocity.x;
+          const dvy = bodyB.velocity.y - bodyA.velocity.y;
+          const relativeVelocity = dvx * nx + dvy * ny;
+
+          // If bodies are moving toward each other, apply damping
+          if (relativeVelocity < 0) {
+            const restitution = 0.6; // Coefficient of restitution (0 = inelastic, 1 = elastic)
+            const impulse =
+              (-(1 + restitution) * relativeVelocity) /
+              (1 / bodyA.mass + 1 / bodyB.mass);
+
+            bodyA.velocity.x -= (impulse / bodyA.mass) * nx;
+            bodyA.velocity.y -= (impulse / bodyA.mass) * ny;
+            bodyB.velocity.x += (impulse / bodyB.mass) * nx;
+            bodyB.velocity.y += (impulse / bodyB.mass) * ny;
+          }
+        }
+      }
+    }
   }
 
   private recenterSystem(): void {
