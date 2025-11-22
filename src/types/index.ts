@@ -14,6 +14,10 @@ export interface Body {
   trail: Vector2[];
   isStatic?: boolean;
   icon?: string;
+  label?: string;
+  note?: string;
+  parentKey?: string;
+  orbitRadius?: number;
 }
 
 export interface SimulationState {

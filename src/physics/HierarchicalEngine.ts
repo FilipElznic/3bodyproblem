@@ -10,6 +10,19 @@ export class HierarchicalEngine {
     this.bodies = JSON.parse(JSON.stringify(initialBodies));
   }
 
+  public loadBodies(nextBodies: Body[]): void {
+    this.bodies = JSON.parse(JSON.stringify(nextBodies));
+    this.stepCount = 0;
+  }
+
+  public addBody(body: Body): void {
+    this.bodies.push(JSON.parse(JSON.stringify(body)));
+  }
+
+  public removeBodyById(id: number): void {
+    this.bodies = this.bodies.filter((body) => body.id !== id);
+  }
+
   private handleCollisions(): void {
     for (let i = 0; i < this.bodies.length; i++) {
       for (let j = i + 1; j < this.bodies.length; j++) {

@@ -1,0 +1,18 @@
+Category	What we're looking for!	Score / 35
+Creativity	We want to see you build cool stuff. Think about what you could do to present your model in a cool way. Maybe you could relate the model to something you see in everyday life. Like Projectile Motion to a snowball fight. We want you to be creative when it comes to developing your models. When you take your model beyond just being a simulation, and you turn it into something that's a part of your other projects, that's when you'll score highly. Other reasons you could score highly are by including creative parameters or extending the model beyond it's original scope!	x / 5
+Design	Pretty Designs are what make physics simulations appealing to everyone! We will judge the artwork, the animations, and the presentation of your model. Top scorers in this category will have beautiful animations and feel handcrafted. They'll have UIs that are graceful and feel made with a human touch.	x / 7
+Realism	We want to see your model behave like the real world. Does it follow the laws of physics? Are the results what you would expect? We want to see that your model is accurate and realistic, and that you haven't accidentaly fudged the numbers. Top scorers would ideally explain how	x / 6
+Modelling	We'll look at the completeness of your model, did you take into account common variable parameters, did you include all the necessary components, and did you test it thoroughly?	x / 4
+Interactivity	We want to see your model interact with the user. Can the user change parameters? Do they know what they're changing? Top scorers will have models that are highly interactive and responsive, with animations that change based off the user's interactions, and easy to use UI. Top scorers in this category will be widely accessible, with websites being prefered.	x / 6
+Technical Ability	We want to see some cool technical solutions. If you do some cool things, like more advanced numerical integration techniques, optimizations etc, put it in your description and we may award you better. Top scorers in this category will wow us with the completness of their models, they'll be fully accessible by the end user, will be responsive, and will have well written code.	x / 7
+Bonuses
+Bonus	Description	Score
+First Submission	The first submission of each challenge will get a bonus of 20.	+ 2
+Second Submission	The second submission of each challenge will get a bonus of 10.	+ 1
+Third Submission	The third submission of each challenge will get a bonus of 5.	+ 0.5
+Best Artwork	The submission with the best artwork for each challenge (as determined by us) will get a bonus of 30.	+ 3
+Developed in the Open	The submission with the most active author in the #accelerate channel for each challenge fortnight will get a bonus of 30, most active will refer to showing how the development of their project is going, not just chatting.	+ 3
+Funniest	The submission with the funniest content for each challenge (as determined by us) will get a bonus of 15.	+ 1.5
+Paper Submission	Submit a paper describing your model and its results. If it is of sufficient rigor (i.e notfull AI generated) we will award a bonus of 10.	+ 1
+
+
